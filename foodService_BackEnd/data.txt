@@ -1,0 +1,26 @@
+{
+    "id": 1,
+    "name": "Larissa",
+    "lastName": "Rodrigues",
+    "email": "rodrigues_larissa@outlook.com",
+    "birthday": "1999-09-13T00:00:00.000+00:00",
+    "street": "Rua Atena",
+    "number": 100,
+    "cep": "17896-255",
+    "city": "São Paulo",
+    "state": "São Paulo",
+    "country": "Brasil"
+},
+{
+    "id": 2,
+    "name": "Leonardo",
+    "lastName": "Bertassoli",
+    "email": "leobertassoli@hotmail.com",
+    "birthday": "1999-11-05T00:00:00.000+00:00",
+    "street": "Rua Zeus",
+    "number": 150,
+    "cep": "25698-784",
+    "city": "Santo André",
+    "state": "São Paulo",
+    "country": "Brasil"
+}
