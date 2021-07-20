@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Users implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, updatable = false)
 	private Long id;
 	private String name;
@@ -23,6 +23,9 @@ public class Users implements Serializable {
 	private String city;
 	private String state;
 	private String country;
+
+	public Users(){
+	}
 
 	public Users(String name, String lastName, String email, String phone, Date birthday, String street, int number, String cep, String city, String state, String country) {
 		this.name = name;
@@ -38,11 +41,11 @@ public class Users implements Serializable {
 		this.country = country;
 	}
 
-	public long getId(){
+	public Long getId(){
 		return id;
 	}
 
-	public void setId(long id){
+	public void setId(Long id){
 		this.id = id;
 	}
 
