@@ -5,7 +5,7 @@ import tech.foodservice.models.Users;
 
 import java.util.Optional;
 
-public interface FoodRepo extends JpaRepository<Users, Long> {
+public interface UsersRepo extends JpaRepository<Users, Long> {
     void deleteUsersById(Long id);
     Optional<Users> findUserById(Long id);
 }
