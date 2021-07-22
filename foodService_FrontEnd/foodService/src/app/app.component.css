@@ -1,0 +1,24 @@
+*{
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.navbar-nav{
+    font-size: 17px;
+}
+
+.nav-link{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding: 16px;
+    float: right;
+}
+
+.navbar-dark .navbar-nav > li > a:hover, 
+.navbar-dark .navbar-nav > li > a:focus{
+    background-color:rgb(29, 29, 29);
+}
+
+
+.navbar-expand-lg{
+    height: 60px;
+}
