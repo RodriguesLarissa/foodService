@@ -1,9 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img src="https://lh3.googleusercontent.com/9YgRwo7kduY6Ynsiz2tvwZz5AEF8rC0Ev5nQuMG3hqNXygNt1FP9jWjxMZP1K1Sda95_wHsxj1zFOTF0C47cC3KeAi7HLBRF_2rPQplmygnB6A1yhyieiXegsqnGmU1Q_tw1yiUXJd9Kr1NzksSEhF-Btcgm1TUQlFlimxBYp_MNxu886Kyh379u7JL8aTKYqi4VmQ_8SeS59DJ0XsgHgsQEMeuYoimwIbrk7CgMFZQct8m16NczGiHENsC7T15rtgO3s_SyMteSzIot0EIGKsInd5dMPB5pmphPwix2LpKT78gHBSsDI5L-4tm8SKWjGRfIhVjAxKAW8HRlqPyGIBtmuLJbEoSo0YihRwOQ_ernbrrxxfxP5brZo9QURqqLngsNK5YVfLRJRPK9J5xi0NPALFQzdFhnNee6H2vytKlhzttbgc8wkoFbwO0hPve-ozJsgnRWxWhvRoHTg1iRaD5uxaMkU78Sq8ZzlxjPEr3bVGonxTmr6NkeSoWJqttoKcxEkBSAYvDwqmPQxXbVTEBa0DJ3rq0LqCny5-TeHvmUSpt4eS647XvkPsnPnLRzhf0QV-004o2Eig_r7ISNRlNa4PGgm_0-d3nA1lzPAcVsuZ1jnNWoxFPuHGw6Gz97jSpOGX6mjeYltqXXzS_FzKJjfY6JhFoV3F-FScSUTyPqD-WGzoSZeBopZR5ro_L-LY6mcG50y5l3xqJBTM0cuNMADA=w891-h210-no?authuser=1" width="300px">
+    </a>
   <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
     <ul class="navbar-nav ms-auto">
       <li class="nav-item">
@@ -19,13 +18,14 @@
         <a routerLinkActive="active" class="nav-link" [routerLink]="['/']"><fa-icon [icon]="faUser"></fa-icon></a>
       </li>
       <li class="nav-item">
-        <a routerLinkActive="active" class="nav-link" [routerLink]="['/']"><fa-icon [icon]="faLogin "></fa-icon></a>
+        <a routerLinkActive="active" class="nav-link" [routerLink]="['/registrar']"><fa-icon [icon]="faLogin"></fa-icon></a>
       </li>
     </ul>
   </div>
 </div>
 
 </nav>
+<br><br>
 <div class="container">
   <router-outlet></router-outlet>
 </div>
