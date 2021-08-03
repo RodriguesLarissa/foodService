@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -21,7 +22,6 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(form: any){
     console.log(form);
-    
   }
 
   constructor(private http: HttpClient) { }
@@ -29,8 +29,8 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  consultaCEP(cep: any){
-    
+  consultaCEP(cep: any, form: any) {
+    // Nova variável "cep" somente com dígitos.
     cep = cep.replace(/\D/g, '');
 
     if(cep != ""){
@@ -39,13 +39,22 @@ export class RegistrationComponent implements OnInit {
 
       if(validacep.test(cep)){
         this.http.get(`https://viacep.com.br/ws/${cep}/json`)
-          .subscribe((data: any) => { console.log(data); });
+          .subscribe((dados: any) => this.populaDadosForm(dados, form));
       }
 
     }
-
   }
 
-
+  populaDadosForm(dados: any, formulario: any) {
+    formulario.form.patchValue({
+      endereco: {
+        street: dados.logradouro,
+        complement: dados.complemento,
+        district: dados.bairro,
+        city: dados.localidade,
+        state: dados.uf
+      }
+    });
+  }
 
 }
