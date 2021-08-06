@@ -1,1 +1,73 @@
-<p>lista-clientes works!</p>
+<div class="container" >
+    <div class="container-fluid p-0" >
+		<div class="row">
+			<div class="col-xl-8">
+				<div class="card">
+					<div class="card-header pb-0">
+						<h2 style="font-weight: bold; position: absolute;">Clientes</h2>
+						<a class="btn btn-dark ms-auto" style="float:right" [routerLink]="['/registrar']"><fa-icon [icon]="addUserIcon"></fa-icon></a>
+					</div>
+					<div class="card-body" id="main-container">
+						<table class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Telefone</th>
+									<th>Email</th>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let user of users">
+									<td>{{ user?.name }} {{ user?.lastName }}</td>
+									<td>{{ user?.phone }}</td>
+									<td>{{ user?.email }}</td>
+									<td><fa-icon [icon]="infoIcon"></fa-icon></td>
+									<td><fa-icon (click)="onOpenModal(user, 'edit')" [icon]="userEditIcon"></fa-icon></td>
+									<td><fa-icon (click)="onOpenModal(user, 'delete')" [icon]="deleteUserIcon"></fa-icon></td>
+								</tr>	
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-4">
+				<div class="card">
+					<div class="card-header">
+						<h5 class="card-title mb-0">Angelica Ramos</h5>
+					</div>
+					<div class="card-body">
+						<table class="table table-sm mt-2 mb-4">
+							<tbody>
+								<tr>
+									<th>Name</th>
+									<td>Angelica Ramos</td>
+								</tr>
+								<tr>
+									<th>Company</th>
+									<td>The Wiz</td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td>angelica@ramos.com</td>
+								</tr>
+								<tr>
+									<th>Phone</th>
+									<td>+1234123123123</td>
+								</tr>
+								<tr>
+									<th>Status</th>
+									<td><span class="badge bg-success">Active</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

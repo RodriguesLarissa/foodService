@@ -1,3 +1,4 @@
+<a [routerLink]="['/clientes']"><fa-icon style="color: black"[icon]="backButton"></fa-icon></a>
 <h3>Cadastro de Clientes</h3>
 <br>
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
@@ -5,7 +6,7 @@
   <div class="row">
       <div class="col">
           <label for="name" class="form-label" style="font-weight: bold">Nome*</label>
-          <input type="text" name="name" class="form-control" [class.is-invalid]="!name.valid && name.touched" id="name" placeholder="Insira o primeiro nome" 
+          <input type="text" name="name" class="form-control" [class.is-invalid]="!name.valid && name.touched" id="name"  
           [(ngModel)]="usuario.name" required #name="ngModel">
           <div class="invalid-feedback">
               O campo nome é obrigatório.
@@ -13,7 +14,7 @@
       </div>
       <div class="col">
         <label for="lastName" class="form-label" style="font-weight: bold">Sobrenome*</label>
-        <input type="text" name="lastName" class="form-control" [class.is-invalid]="!lastName.valid && lastName.touched" id="lastName" placeholder="Insira o sobrenome completo" 
+        <input type="text" name="lastName" class="form-control" [class.is-invalid]="!lastName.valid && lastName.touched" id="lastName" 
         [(ngModel)]="usuario.lastName" required #lastName="ngModel">
         <div class="invalid-feedback">
             O campo sobrenome é obrigatório.
@@ -23,25 +24,30 @@
   <br>
 
   <div class="row">
-      <div class="col-8">
+      <div class="col-5">
           <label for="email" class="form-label" style="font-weight: bold">E-mail*</label>
-          <input type="email" name="email" class="form-control" [class.is-invalid]="!email.valid && email.touched" id="email" placeholder="Insira o e-mail (Ex: usuario@hotmail.com)" 
-          [(ngModel)]="usuario.email" required #email="ngModel" email>
+          <input type="email" name="email" class="form-control" [class.is-invalid]="!email.valid && email.touched" id="email"
+                    [(ngModel)]="usuario.email" required #email="ngModel" email>
           <div class="invalid-feedback">
               O campo e-mail é obrigatório.
           </div>
       </div>
       <div class="col-3">
+        <label for="phone" class="form-label" style="font-weight: bold">Telefone*</label>
+        <input type="text" name="phone" class="form-control" [class.is-invalid]="!phone.valid && email.touched" id="email"  
+        [(ngModel)]="usuario.phone" required #phone="ngModel" phone>
+        <div class="invalid-feedback">
+            O campo telefone é obrigatório.
+        </div>
+    </div>
+      <div class="col-3">
         <label for="birthday" class="form-label" style="font-weight: bold">Data de Nascimento*</label>
         <input class="form-control" placeholder="yyyy-mm-dd"
-             name="birthday" [class.is-invalid]="!birthday.validate" id="birthday" 
+             name="birthday" id="birthday" 
              [(ngModel)]="usuario.birthday" required ngbDatepicker #birthday="ngbDatepicker">
-             <div class="invalid-feedback">
-                O campo data de nascimento é obrigatório.
-            </div>
     </div>
     <div class="col-1">
-        <button class="btn btn-primary" (click)="birthday.toggle()" type="button"><fa-icon style="color: yellow;" [icon]="iconCalendar"></fa-icon></button>
+        <button class="btn btn-primary" (click)="birthday.toggle()" type="button"><fa-icon [icon]="iconCalendar"></fa-icon></button>
     </div>
   </div>
   <br>

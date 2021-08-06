@@ -19,15 +19,14 @@ public class Users implements Serializable {
 	private Date birthday;
 	private String street;
 	private int number;
+	private String complement;
+	private String district;
 	private String cep;
 	private String city;
 	private String state;
 	private String country;
 
-	public Users(){
-	}
-
-	public Users(String name, String lastName, String email, String phone, Date birthday, String street, int number, String cep, String city, String state, String country) {
+	public Users(String name, String lastName, String email, String phone, Date birthday, String street, int number, String cep, String complement, String district, String city, String state, String country) {
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
@@ -36,9 +35,39 @@ public class Users implements Serializable {
 		this.street = street;
 		this.number = number;
 		this.cep = cep;
+		this.district = district;
+		this.complement = complement;
 		this.city = city;
 		this.state = state;
 		this.country = country;
+	}
+
+	public Users(){
+		
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getComplement() {
+		return complement;
+	}
+
+	public void setComplement(String complement) {
+		this.complement = complement;
+	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
 	}
 
 	public Long getId(){

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleLeft, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -19,6 +19,7 @@ export class RegistrationComponent implements OnInit {
   model: NgbDateStruct | undefined;
 
   iconCalendar = faCalendarAlt
+  backButton = faArrowCircleLeft
 
   onSubmit(form: any){
     console.log(form);
