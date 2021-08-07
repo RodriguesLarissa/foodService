@@ -10,6 +10,14 @@ import { Users } from '../clientes/users';
 export class UsersService {
 
   private apiServerUrl = environment.apiBaseUrl;
+  private user!: Users;
+
+  public getUser(): Users {
+    return this.user;
+  }
+  public setUser(value: Users) {
+    this.user = value;
+  }
 
   constructor(private http: HttpClient){}
 
@@ -32,4 +40,5 @@ export class UsersService {
   public findUser(usersId: number): Observable<Users> {
     return this.http.get<Users>(`${this.apiServerUrl}/users/find/${usersId}`);
   }
+
 }

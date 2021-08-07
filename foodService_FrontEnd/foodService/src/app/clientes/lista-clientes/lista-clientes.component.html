@@ -1,73 +1,111 @@
 <div class="container" >
     <div class="container-fluid p-0" >
-		<div class="row">
-			<div class="col-xl-8">
-				<div class="card">
-					<div class="card-header pb-0">
-						<h2 style="font-weight: bold; position: absolute;">Clientes</h2>
-						<a class="btn btn-dark ms-auto" style="float:right" [routerLink]="['/registrar']"><fa-icon [icon]="addUserIcon"></fa-icon></a>
-					</div>
-					<div class="card-body" id="main-container">
-						<table class="table table-striped" style="width:100%">
-							<thead>
-								<tr>
-									<th>Nome</th>
-									<th>Telefone</th>
-									<th>Email</th>
-									<th></th>
-									<th></th>
-									<th></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr *ngFor="let user of users">
-									<td>{{ user?.name }} {{ user?.lastName }}</td>
-									<td>{{ user?.phone }}</td>
-									<td>{{ user?.email }}</td>
-									<td><fa-icon [icon]="infoIcon"></fa-icon></td>
-									<td><fa-icon (click)="onOpenModal(user, 'edit')" [icon]="userEditIcon"></fa-icon></td>
-									<td><fa-icon (click)="onOpenModal(user, 'delete')" [icon]="deleteUserIcon"></fa-icon></td>
-								</tr>	
-							</tbody>
-						</table>
-					</div>
-				</div>
+		<div class="card">
+			<div class="card-header pb-0">
+				<h2 style="font-weight: bold; position: absolute;">Clientes</h2>
+				<a class="btn btn-dark ms-auto" style="float:right" [routerLink]="['/registrar']"><fa-icon [icon]="addUserIcon"></fa-icon></a>
 			</div>
-
-			<div class="col-xl-4">
-				<div class="card">
-					<div class="card-header">
-						<h5 class="card-title mb-0">Angelica Ramos</h5>
-					</div>
-					<div class="card-body">
-						<table class="table table-sm mt-2 mb-4">
-							<tbody>
-								<tr>
-									<th>Name</th>
-									<td>Angelica Ramos</td>
-								</tr>
-								<tr>
-									<th>Company</th>
-									<td>The Wiz</td>
-								</tr>
-								<tr>
-									<th>Email</th>
-									<td>angelica@ramos.com</td>
-								</tr>
-								<tr>
-									<th>Phone</th>
-									<td>+1234123123123</td>
-								</tr>
-								<tr>
-									<th>Status</th>
-									<td><span class="badge bg-success">Active</span></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
+			<div class="card-body" id="main-container">
+				<table class="table table-striped" style="width:100%">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Telefone</th>
+							<th>Email</th>
+							<th></th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let user of users">
+							<td>{{ user?.name }} {{ user?.lastName }}</td>
+							<td>{{ user?.phone }}</td>
+							<td>{{ user?.email }}</td>
+							<td><fa-icon (click)="onOpenModal(user, 'info')"[icon]="infoIcon"></fa-icon></td>
+							<td><fa-icon [routerLink]="'/editar'" (click)="openEditPage(user)" [icon]="userEditIcon"></fa-icon></td>
+							<td><fa-icon (click)="onOpenModal(user, 'delete')" [icon]="deleteUserIcon"></fa-icon></td>
+						</tr>	
+					</tbody>
+				</table>
 			</div>
 		</div>
-
 	</div>
 </div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteUsersModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	   <div class="modal-content">
+		  <div class="modal-header">
+			 <h5 class="modal-title" id="deleteModelLabel">Exclusão do Cliente</h5>
+			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			 <p>Tem certeza que deseja excluir o cliente {{ deleteUsers?.name }}?</p>
+			 <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+				<button (click)="onDeleteUser(deleteUsers.id)" class="btn btn-danger" data-dismiss="modal">Sim</button>
+			 </div>
+		  </div>
+	   </div>
+	</div>
+  </div>
+
+  <!-- Info Modal -->
+<div class="modal fade" id="infoUsersModal" tabindex="-1" role="dialog" aria-labelledby="infoUsersModelLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	   <div class="modal-content">
+		  <div class="modal-header">
+			 <h5 class="modal-title" id="deleteModelLabel">Informações do Cliente {{ infoUser?.name }}</h5>
+			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			<table class="table table-sm mt-2 mb-4">
+				<tbody>
+					<tr>
+						<th>Nome</th>
+						<td>{{ infoUser?.name }} {{ infoUser?.lastName }}</td>
+					</tr>
+					<tr>
+						<th>E-mail</th>
+						<td>{{ infoUser?.email }}</td>
+					</tr>
+					<tr>
+						<th>Telefone</th>
+						<td>{{ infoUser?.phone }}</td>
+					</tr>
+					<tr>
+						<th>Data de Aniversário</th>
+						<td>{{ infoUser?.birthday }}</td>
+					</tr>
+					<tr>
+						<th>CEP</th>
+						<td>{{ infoUser?.cep }}</td>
+					</tr>
+					<tr>
+						<th>Rua</th>
+						<td>{{ infoUser?.street }}, {{ infoUser?.number }}</td>
+					</tr>
+					<tr *ngIf="infoUser?.complement != undefined">
+						<th>Complemento</th>
+						<td>{{ infoUser?.complement }}</td>
+					</tr>
+					<tr>
+						<th>Bairro</th>
+						<td>{{ infoUser?.district }}</td>
+					</tr>
+					<tr>
+						<th>Cidade</th>
+						<td>{{ infoUser?.city }}</td>
+					</tr>
+					<tr>
+						<th>Estado</th>
+						<td>{{ infoUser?.state }}</td>
+					</tr>
+				</tbody>
+			</table>
+		  </div>
+	   </div>
+	</div>
+  </div>

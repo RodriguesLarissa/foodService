@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { faCalendarAlt, faEdit, faInfoCircle, faTrashAlt, faUserEdit, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarAlt, faEdit, faInfoCircle, faTrashAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { UsersService } from 'src/app/services/users.service';
 import { Users } from '../users';
@@ -18,17 +18,13 @@ export class ListaClientesComponent implements OnInit {
   public editUsers!: Users;
   public deleteUsers!: Users;
   public user!: Users;
+  public infoUser!: Users;
 
   infoIcon = faInfoCircle;
   addUserIcon = faUserPlus;
   deleteUserIcon = faTrashAlt;
   userEditIcon = faEdit;
   iconCalendar = faCalendarAlt;
-
-  usuario: any = {
-    name: null,
-    lastName: null
-  }
 
   model!: NgbDateStruct;
 
@@ -37,6 +33,13 @@ export class ListaClientesComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+  }
+
+  openEditPage(user: Users){
+    if(user.birthday != null){
+      user.birthday = user.birthday.substring(0,10);
+    }
+    this.usersService.setUser(user);
   }
 
   consultaCEP(cep: any, form: any) {
@@ -69,7 +72,6 @@ export class ListaClientesComponent implements OnInit {
     this.usersService.getUsers().subscribe(
       (response: Users[]) => {
         this.users = response;
-        console.log(this.users);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -77,40 +79,28 @@ export class ListaClientesComponent implements OnInit {
     );
   }
 
-  public findUser(usersId: number): void {
-    this.usersService.findUser(usersId).subscribe(
-      (response: Users) => {
-        this.user = response;
-        console.log(this.user);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-  
-  public onOpenModal(user: any, mode: string): void {
+  public onOpenModal(user: Users, mode: string): void {
     const container:any = document.getElementById('main-container');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-bs-toggle', 'modal');
-    if (mode === 'add') {
-      button.setAttribute('data-bs-target', '#addUsersModal');
-    }
-    if (mode === 'edit') {
-      this.editUsers = user;
-      button.setAttribute('data-bs-target', '#updateUsersModal');
+    if (mode === 'info') {
+      this.infoUser = user;
+      if(user.birthday != null){
+        user.birthday = user.birthday.substring(0,10);
+      }
+      button.setAttribute('data-bs-target', '#infoUsersModal');
     }
     if (mode === 'delete') {
       this.deleteUsers = user;
-      button.setAttribute('data-bs-target', '#deleteUsersModal');
+    button.setAttribute('data-bs-target', '#deleteUsersModal');
     }
     container.appendChild(button);
     button.click();
   }
 
-  public onAddEmloyee(addForm: NgForm): void {
+  public onAddUser(addForm: NgForm): void {
     document.getElementById('add-user-form')?.click();
     this.usersService.addUsers(addForm.value).subscribe(
       (response: Users) => {
@@ -125,5 +115,15 @@ export class ListaClientesComponent implements OnInit {
     );
   }
 
-
+  public onDeleteUser(userId: number): void {
+    this.usersService.deleteUsers(userId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getUsers();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 }

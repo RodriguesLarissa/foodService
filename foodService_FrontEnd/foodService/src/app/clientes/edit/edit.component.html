@@ -1,13 +1,14 @@
 <a [routerLink]="['/clientes']"><fa-icon style="color: black" id="backButton" [icon]="backButton"></fa-icon></a>
-<h3>Cadastro de Clientes</h3>
+<h3>Editar Cliente</h3>
 <br>
-<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="form-horizontal">
     
   <div class="row">
       <div class="col">
+            <input type="hidden" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" >
           <label for="name" class="form-label" style="font-weight: bold">Nome*</label>
           <input type="text" name="name" class="form-control" [class.is-invalid]="!name.valid && name.touched" id="name"  
-          ngModel required #name="ngModel">
+          ngModel="{{editUser?.name}}"  required #name="ngModel">
           <div class="invalid-feedback">
               O campo nome é obrigatório.
           </div>
@@ -15,7 +16,7 @@
       <div class="col">
         <label for="lastName" class="form-label" style="font-weight: bold">Sobrenome*</label>
         <input type="text" name="lastName" class="form-control" [class.is-invalid]="!lastName.valid && lastName.touched" id="lastName" 
-        ngModel required #lastName="ngModel">
+        ngModel="{{editUser?.lastName}}" required #lastName="ngModel">
         <div class="invalid-feedback">
             O campo sobrenome é obrigatório.
         </div>
@@ -24,10 +25,10 @@
   <br>
 
   <div class="row">
-      <div class="col-5">
+      <div class="col-6">
           <label for="email" class="form-label" style="font-weight: bold">E-mail*</label>
           <input type="email" name="email" class="form-control" [class.is-invalid]="!email.valid && email.touched" id="email"
-          ngModel required #email="ngModel" email>
+          ngModel="{{editUser?.email}}" required #email="ngModel" email>
           <div class="invalid-feedback">
               O campo e-mail é obrigatório.
           </div>
@@ -35,19 +36,15 @@
       <div class="col-3">
         <label for="phone" class="form-label" style="font-weight: bold">Telefone*</label>
         <input type="text" name="phone" class="form-control" [class.is-invalid]="!phone.valid && email.touched" id="email"  
-        ngModel required #phone="ngModel" phone>
+        ngModel="{{editUser?.phone}}" required #phone="ngModel" phone>
         <div class="invalid-feedback">
             O campo telefone é obrigatório.
         </div>
     </div>
       <div class="col-3">
         <label for="birthday" class="form-label" style="font-weight: bold">Data de Nascimento*</label>
-        <input class="form-control" placeholder="yyyy-mm-dd"
-             name="birthday" id="birthday" 
-             ngModel required ngbDatepicker #birthday="ngbDatepicker">
-    </div>
-    <div class="col-1">
-        <button class="btn btn-primary" (click)="birthday.toggle()" type="button"><fa-icon [icon]="iconCalendar"></fa-icon></button>
+        <input class="form-control" name="birthday" id="birthday" 
+             ngModel="{{editUser?.birthday}}" required #birthday="ngModel" phone>
     </div>
   </div>
   <br>
@@ -56,7 +53,7 @@
         <div class="col-md-3">
             <label for="cep" class="form-label" style="font-weight: bold;">CEP*</label>
             <input type="text" class="form-control" name="cep" id="cep" [class.is-invalid]="!cep.valid && cep.touched" 
-            ngModel required #cep="ngModel" (blur)="consultaCEP($any($event.target).value, f)">
+            ngModel="{{editUser?.cep}}" required #cep="ngModel" (blur)="consultaCEP($any($event.target).value, f)">
             <div class="invalid-feedback">
                 O campo CEP é obrigatório.
             </div>
@@ -65,7 +62,7 @@
         <div class="col-md-3">
             <label for="number" class="form-label" style="font-weight: bold;">Número*</label>
             <input type="text" class="form-control" name="number" id="number" [class.is-invalid]="!number.valid && number.touched" 
-            ngModel required #number="ngModel">
+            ngModel="{{editUser?.number}}" required #number="ngModel">
             <div class="invalid-feedback">
                 O campo número é obrigatório.
             </div>
@@ -85,7 +82,7 @@
             <label for="street" class="form-label" style="font-weight: bold;">Rua*</label>
             <input type="text" name="street" class="form-control" id="street"  
             [class.is-invalid]="!street.valid && street.touched" 
-            ngModel required #street="ngModel">
+            ngModel="{{editUser?.street}}" required #street="ngModel">
             <div class="invalid-feedback">
             O campo rua é obrigatório.
         </div>
@@ -98,7 +95,7 @@
             <label for="district" class="form-label" style="font-weight: bold;">Bairro*</label>
             <input type="text" name="district" class="form-control" id="district"  
             [class.is-invalid]="!district.valid && district.touched" 
-            ngModel required #district="ngModel">
+            ngModel="{{editUser?.district}}" required #district="ngModel">
             <div class="invalid-feedback">
             O campo bairro é obrigatório.
         </div>
@@ -108,7 +105,7 @@
             <label for="city" class="form-label" style="font-weight: bold;">Cidade*</label>
             <input type="text" name="city" class="form-control" id="city"  
             [class.is-invalid]="!city.valid && city.touched" 
-            ngModel required #city="ngModel" >
+            ngModel="{{editUser?.city}}" required #city="ngModel" >
             <div class="invalid-feedback">
             O campo cidade é obrigatório.
         </div>
@@ -117,7 +114,7 @@
             <label for="state" class="form-label" style="font-weight: bold;">State*</label>
             <input type="text" name="state" class="form-control" id="state"  
             [class.is-invalid]="!state.valid && state.touched" 
-            ngModel required #state="ngModel" >
+            ngModel="{{editUser?.state}}" required #state="ngModel" >
             <div class="invalid-feedback">
             O campo estado é obrigatório.
         </div>

@@ -4,7 +4,7 @@ export interface Users {
     lastName: string;
     email: string;
     phone: string;
-    birthday: Date;
+    birthday: string;
     cep: string;
     street: string;
     number: number;
@@ -12,5 +12,4 @@ export interface Users {
     district: string;
     city: string;
     state: string;
-    country: string;
   }

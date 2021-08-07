@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './clientes/registration/registration.component';
 import { HomepageComponent } from './home/homepage/homepage.component';
 import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes.component';
+import { EditComponent } from './clientes/edit/edit.component';
+import { UsersService } from './services/users.service';
 
 registerLocaleData(localePt);
 
@@ -21,7 +23,8 @@ registerLocaleData(localePt);
     AppComponent,
     RegistrationComponent,
     HomepageComponent,
-    ListaClientesComponent
+    ListaClientesComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,9 @@ registerLocaleData(localePt);
     HttpClientModule,
     NgbModule
   ],
-  providers: [{ provide: localePt, useValue: 'pt'}],
+  providers: [{ provide: localePt, useValue: 'pt'},
+    UsersService,
+    ListaClientesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

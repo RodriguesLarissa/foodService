@@ -1,8 +1,6 @@
 package tech.foodservice.models;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +14,7 @@ public class Users implements Serializable {
 	private String lastName;
 	private String email;
 	private String phone;
-	private Date birthday;
+	private String birthday;
 	private String street;
 	private int number;
 	private String complement;
@@ -26,7 +24,7 @@ public class Users implements Serializable {
 	private String state;
 	private String country;
 
-	public Users(String name, String lastName, String email, String phone, Date birthday, String street, int number, String cep, String complement, String district, String city, String state, String country) {
+	public Users(String name, String lastName, String email, String phone, String birthday, String street, int number, String cep, String complement, String district, String city, String state, String country) {
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
@@ -102,11 +100,11 @@ public class Users implements Serializable {
 		this.email = email;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 
@@ -159,14 +157,12 @@ public class Users implements Serializable {
 	}
 
 	public String toString() {
-		SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-
 		return  "Id: " + this.id + "\n" +
 				"Name: " + this.name + "\n" +
 				"LastName: " + this.lastName + "\n" +
 				"Phone: " + this.phone + "\n" +
 				"Email: " + this.email + "\n" +
-				"Birthday: " + data.format(birthday) + "\n" +
+				"Birthday: " + this.birthday + "\n" +
 				"Street: " + this.street + "\n" +
 				"Number: " + this.number + "\n" +
 				"Cep: " + this.cep + "\n" +

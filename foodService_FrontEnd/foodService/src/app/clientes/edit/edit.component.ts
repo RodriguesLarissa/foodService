@@ -2,50 +2,54 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { faArrowCircleLeft, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import { NgForm } from '@angular/forms';
 import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 
 import { ListaClientesComponent } from '../lista-clientes/lista-clientes.component'
 import { UsersService } from 'src/app/services/users.service';
 import { Users } from '../users';
+import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class EditComponent implements OnInit {
 
+  public editUser!: Users;
   model: NgbDateStruct | undefined;
- 
 
   iconCalendar = faCalendarAlt
   backButton = faArrowCircleLeft
 
-  onSubmit(addForm: NgForm): void{
+  onSubmit(user: Users): void{
     document.getElementById("backButton")?.click();
-    addForm.value.birthday =  this.parserFormatter.format(addForm.value.birthday)
-    this.userService.addUsers(addForm.value).subscribe(
+    this.userService.updateUsers(user).subscribe(
       (response: Users) => {
         console.log(response);
         this.listaClienteComponent.getUsers();
-        addForm.reset();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
-        addForm.reset();
       }
     );
   }
 
   constructor(private http: HttpClient,
-              private userService: UsersService,
-              private parserFormatter: NgbDateParserFormatter,
-              private listaClienteComponent: ListaClientesComponent) { }
+    private userService: UsersService,
+    private listaClienteComponent: ListaClientesComponent,
+    private router: Router) { }
 
   ngOnInit(): void {
-
-  }
+    if(this.userService.getUser() == null){
+      this.router.navigateByUrl('/clientes');
+    }
+    else{
+      this.editUser = this.userService.getUser();
+      console.log(this.editUser);
+    }
+    }
 
   consultaCEP(cep: any, form: any) {
     // Nova variável "cep" somente com dígitos.
@@ -65,11 +69,13 @@ export class RegistrationComponent implements OnInit {
 
   populaDadosForm(dados: any, formulario: any) {
     formulario.form.patchValue({
-      street: dados.logradouro,
-      complement: dados.complemento,
-      district: dados.bairro,
-      city: dados.localidade,
-      state: dados.uf
+      endereco: {
+        street: dados.logradouro,
+        complement: dados.complemento,
+        district: dados.bairro,
+        city: dados.localidade,
+        state: dados.uf
+      }
     });
   }
 
