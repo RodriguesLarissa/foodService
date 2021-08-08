@@ -94,7 +94,7 @@ export class ListaClientesComponent implements OnInit {
     }
     if (mode === 'delete') {
       this.deleteUsers = user;
-    button.setAttribute('data-bs-target', '#deleteUsersModal');
+      button.setAttribute('data-bs-target', '#deleteUsersModal');
     }
     container.appendChild(button);
     button.click();

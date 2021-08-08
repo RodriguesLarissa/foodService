@@ -23,12 +23,12 @@ export class RegistrationComponent implements OnInit {
   backButton = faArrowCircleLeft
 
   onSubmit(addForm: NgForm): void{
+    this.listaClienteComponent.getUsers();
     document.getElementById("backButton")?.click();
     addForm.value.birthday =  this.parserFormatter.format(addForm.value.birthday)
     this.userService.addUsers(addForm.value).subscribe(
       (response: Users) => {
         console.log(response);
-        this.listaClienteComponent.getUsers();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
