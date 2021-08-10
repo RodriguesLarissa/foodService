@@ -1,0 +1,87 @@
+<a [routerLink]="['/menu']"><fa-icon style="color: black" id="backButton" [icon]="backButton"></fa-icon></a>
+<h3>Cadastro de Cardápio</h3>
+<br>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
+    
+  <div class="row">
+      <div class="col-7">
+          <label for="foodName" class="form-label" style="font-weight: bold">Nome do Prato*</label>
+          <input type="text" name="foodName" class="form-control" [class.is-invalid]="!foodName.valid && foodName.touched" id="foodName" ngModel required #foodName="ngModel">
+          <div class="invalid-feedback">
+              O campo nome é obrigatório.
+          </div>
+      </div>
+      <div class="col-5">
+        <label for="price" class="form-label" style="font-weight: bold">Preço*</label>
+        <input type="text" name="price" class="form-control" [class.is-invalid]="!price.valid && price.touched" id="price" 
+        ngModel required #price="ngModel">
+        <div class="invalid-feedback">
+            O campo preço é obrigatório.
+        </div>
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+      <div class="col-5">
+            <label class="form-label" style="font-weight: bold">Tipo de Prato*</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="foodType" id="appetizer"
+                value="Aperitivos" ngModel required #foodType="ngModel" checked>
+                <label class="form-check-label" for="appetizer">
+                    Aperitivos
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="foodType" id="lunch"
+                value="Lanches" ngModel #foodType="ngModel" required>
+                <label class="form-check-label" for="lunch">
+                    Lanches
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="foodType" id="beirut"
+                value="Beirutes" ngModel #foodType="ngModel" required>
+                <label class="form-check-label" for="beirut">
+                    Beirutes
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="foodType" id="dessert"
+                value="Sobremesas" ngModel #foodType="ngModel">
+                <label class="form-check-label" for="dessert">
+                    Sobremesas
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="foodType" id="drinks"
+                value="Bebidas" ngModel #foodType="ngModel" required>
+                <label class="form-check-label" for="drinks">
+                    Bebidas
+                </label>
+            </div>
+        </div>
+        <div style="margin-top: 38px;" class="col-7">
+            <label class="form-label" for="imageUrl" style="font-weight: bold">URL da Imagem do Prato*</label>
+            <input type="text" name="imageUrl" class="form-control" id="imageUrl" [class.is-invalid]="!imageUrl.valid && imageUrl.touched"
+            ngModel required #imageUrl="ngModel" >
+            <div class="invalid-feedback">
+                A URL da imagem é obrigatória.
+            </div>
+        </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <label for="foodDetails" class="form-label" style="font-weight: bold">Detalhes do Prato*</label>
+    <textarea class="form-control" name="foodDetails" id="foodDetails" placeholder="Descreva sobre o alimento" [class.is-invalid]="!foodDetails.valid && foodDetails.touched" ngModel required #foodDetails="ngModel" ></textarea>
+    <div class="invalid-feedback">
+        O detalhamento do prato é obrigatório.
+    </div>
+  </div>
+  <br>
+
+  <button type="button" [routerLink]="['/menu']" class="btn btn-dark" style="margin-left: 10px; float: right;">Cancelar</button>
+  <button type="submit" class="btn btn-warning" [disabled]="!f.valid" style="float: right;">Salvar</button>
+
+</form>

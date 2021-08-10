@@ -5,13 +5,13 @@
     
   <div class="row">
       <div class="col">
-            <input type="hidden" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" >
-          <label for="name" class="form-label" style="font-weight: bold">Nome*</label>
-          <input type="text" name="name" class="form-control" [class.is-invalid]="!name.valid && name.touched" id="name"  
-          ngModel="{{editUser?.name}}"  required #name="ngModel">
-          <div class="invalid-feedback">
-              O campo nome é obrigatório.
-          </div>
+        <input type="hidden" ngModel="{{editUser?.id}}" name="id" class="form-control" id="id" >
+        <label for="name" class="form-label" style="font-weight: bold">Nome*</label>
+        <input type="text" name="name" class="form-control" [class.is-invalid]="!name.valid && name.touched" id="name"  
+        ngModel="{{editUser?.name}}"  required #name="ngModel">
+        <div class="invalid-feedback">
+            O campo nome é obrigatório.
+        </div>
       </div>
       <div class="col">
         <label for="lastName" class="form-label" style="font-weight: bold">Sobrenome*</label>

@@ -24,11 +24,11 @@ export class EditComponent implements OnInit {
   backButton = faArrowCircleLeft
 
   onSubmit(user: Users): void{
-    document.getElementById("backButton")?.click();
+    this.listaClienteComponent.getUsers();
+    this.router.navigateByUrl('/clientes');
     this.userService.updateUsers(user).subscribe(
       (response: Users) => {
         console.log(response);
-        this.listaClienteComponent.getUsers();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

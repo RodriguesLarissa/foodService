@@ -1,10 +1,10 @@
-package tech.foodservice.service;
+package tech.foodservice.clients.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tech.foodservice.exception.UserNotFoundException;
-import tech.foodservice.models.Users;
-import tech.foodservice.repo.UsersRepo;
+import tech.foodservice.exception.NotFoundException;
+import tech.foodservice.clients.models.Users;
+import tech.foodservice.clients.repo.UsersRepo;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -29,7 +29,7 @@ public class UsersService {
 
     public Users findUserById(Long id){
         return usersRepo.findUserById(id)
-                .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
+                .orElseThrow(() -> new NotFoundException("User by id " + id + " was not found"));
     }
 
     public void deleteUsersById(Long id){

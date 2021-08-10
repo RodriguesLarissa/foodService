@@ -1,0 +1,80 @@
+body{
+    margin-top:20px;
+    background:#f9f9f9;
+}
+
+.card {
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    margin-bottom: 20px;
+    box-shadow: 0 25px 20px -21px rgba(0,0,0,0.57);
+    margin-top:30px;
+    height: 310px;
+    width: 260px;
+}
+.card-background {
+    position: relative;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.card-background .image {
+    border-radius: 6px;
+
+}
+.card .image {
+    width: 100%;
+    overflow: hidden;
+    height: 310px;
+    width: 260px;
+    border-radius: 6px 6px 0 0;
+    position: relative;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.card .image img {
+    width: 100%;
+    object-fit: cover;
+
+}
+
+.card-background .filter {
+    opacity: 0.20;
+    filter: alpha(opacity=20.00000000000001);
+    border-radius: 6px;
+}
+.card .filter {
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.68);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.card-background:hover .filter {
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+}
+
+.menu-details{
+    margin-top:30px;
+    margin-right: 10px;
+    text-align: justify;
+    width: 230px;
+    height: 150px;
+}
+
+.menu-title{
+    font-weight: bold;
+}
+
+.dir{
+    position: absolute; 
+    top: 155px;
+}
+
+.menu-price{
+    font-weight: bold;
+    margin-top:40px;
+}

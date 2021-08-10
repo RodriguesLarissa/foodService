@@ -1,4 +1,4 @@
-package tech.foodservice.models;
+package tech.foodservice.clients.models;
 
 import java.io.Serializable;
 import javax.persistence.*;

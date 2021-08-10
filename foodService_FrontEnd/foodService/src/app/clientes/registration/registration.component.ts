@@ -8,6 +8,7 @@ import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import { ListaClientesComponent } from '../lista-clientes/lista-clientes.component'
 import { UsersService } from 'src/app/services/users.service';
 import { Users } from '../users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -24,7 +25,7 @@ export class RegistrationComponent implements OnInit {
 
   onSubmit(addForm: NgForm): void{
     this.listaClienteComponent.getUsers();
-    document.getElementById("backButton")?.click();
+    this.router.navigateByUrl('/clientes');
     addForm.value.birthday =  this.parserFormatter.format(addForm.value.birthday)
     this.userService.addUsers(addForm.value).subscribe(
       (response: Users) => {
@@ -41,7 +42,8 @@ export class RegistrationComponent implements OnInit {
   constructor(private http: HttpClient,
               private userService: UsersService,
               private parserFormatter: NgbDateParserFormatter,
-              private listaClienteComponent: ListaClientesComponent) { }
+              private listaClienteComponent: ListaClientesComponent,
+              private router: Router) { }
 
   ngOnInit(): void {
 

@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col">
+        <h2 class="menu-title">Cardápio</h2>
+    </div>
+    <div class="col-md-3 ms-auto">
+        <a class="btn btn-dark" style="float:right" [routerLink]="['registrar']">Adicionar <fa-icon [icon]="addButton"></fa-icon></a>
+    </div>
+</div>
+<div  id="main-container" *ngFor="let menu of menus; let i = index">
+    <div class="row">
+            <div class="col-md-3">
+                <div class="esq" *ngIf="i % 2 == 0">
+                    <div class="card card-background">
+                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
+                        <div class="filter"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="esq" *ngIf="i%2 == 0">
+                    <div class="menu-details">
+                        <h3 class="menu-title">{{ menu?.foodName }}</h3>
+                        {{ menu?.foodDetails }}
+                    </div>
+                    <div class="menu-price">
+                        <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
+                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dir" *ngIf="i % 2 != 0">
+                    <div class="card card-background">
+                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
+                        <div class="filter"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dir" *ngIf="i%2 != 0">
+                    <div class="menu-details">
+                        <h3 class="menu-title">{{ menu?.foodName }}</h3>
+                        {{ menu?.foodDetails }}
+                    </div>
+                    <div class="menu-price">
+                        <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
+                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)">Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+    
+</div>
+
+ <!-- Delete Modal -->
+<div class="modal fade" id="deleteMenuModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	   <div class="modal-content">
+		  <div class="modal-header">
+			 <h5 class="modal-title" id="deleteMenuModal">Exclusão do Prato</h5>
+			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		  </div>
+		  <div class="modal-body">
+			 <p>Tem certeza que deseja excluir o cliente {{ deleteMenu?.foodName }}?</p>
+			 <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+				<button (click)="onDeleteMenu(deleteMenu.id)" class="btn btn-danger" data-bs-dismiss="modal">Sim</button>
+			 </div>
+		  </div>
+	   </div>
+	</div>
+  </div>

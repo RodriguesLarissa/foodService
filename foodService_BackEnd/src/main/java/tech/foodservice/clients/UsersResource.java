@@ -1,10 +1,10 @@
-package tech.foodservice;
+package tech.foodservice.clients;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.foodservice.models.Users;
-import tech.foodservice.service.UsersService;
+import tech.foodservice.clients.models.Users;
+import tech.foodservice.clients.service.UsersService;
 
 import java.util.List;
 

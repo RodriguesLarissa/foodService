@@ -3,7 +3,7 @@
 		<div class="card">
 			<div class="card-header pb-0">
 				<h2 style="font-weight: bold; position: absolute;">Clientes</h2>
-				<a class="btn btn-dark ms-auto" style="float:right" [routerLink]="['/registrar']"><fa-icon [icon]="addUserIcon"></fa-icon></a>
+				<a class="btn btn-dark ms-auto" style="float:right" [routerLink]="['registrar']"><fa-icon [icon]="addUserIcon"></fa-icon></a>
 			</div>
 			<div class="card-body" id="main-container">
 				<table class="table table-striped" style="width:100%">
@@ -23,7 +23,7 @@
 							<td>{{ user?.phone }}</td>
 							<td>{{ user?.email }}</td>
 							<td><fa-icon (click)="onOpenModal(user, 'info')"[icon]="infoIcon"></fa-icon></td>
-							<td><fa-icon [routerLink]="'/editar'" (click)="openEditPage(user)" [icon]="userEditIcon"></fa-icon></td>
+							<td><fa-icon [routerLink]="'editar'" (click)="openEditPage(user)" [icon]="userEditIcon"></fa-icon></td>
 							<td><fa-icon (click)="onOpenModal(user, 'delete')" [icon]="deleteUserIcon"></fa-icon></td>
 						</tr>	
 					</tbody>

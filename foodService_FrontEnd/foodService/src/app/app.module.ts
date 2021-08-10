@@ -14,6 +14,10 @@ import { HomepageComponent } from './home/homepage/homepage.component';
 import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes.component';
 import { EditComponent } from './clientes/edit/edit.component';
 import { UsersService } from './services/users.service';
+import { AddFoodComponent } from './foodMenu/add-food/add-food.component';
+import { EditFoodComponent } from './foodMenu/edit-food/edit-food.component';
+import { ListFoodComponent } from './foodMenu/list-food/list-food.component';
+import { MenuService } from './services/menu.service';
 
 registerLocaleData(localePt);
 
@@ -24,7 +28,10 @@ registerLocaleData(localePt);
     RegistrationComponent,
     HomepageComponent,
     ListaClientesComponent,
-    EditComponent
+    EditComponent,
+    AddFoodComponent,
+    EditFoodComponent,
+    ListFoodComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,9 @@ registerLocaleData(localePt);
   ],
   providers: [{ provide: localePt, useValue: 'pt'},
     UsersService,
-    ListaClientesComponent],
+    ListaClientesComponent,
+    MenuService,
+    ListFoodComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
