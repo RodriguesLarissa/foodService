@@ -5,5 +5,4 @@ export interface Menu {
     foodType: string;
     imageUrl: string;
     price: string;
-
- }
+}

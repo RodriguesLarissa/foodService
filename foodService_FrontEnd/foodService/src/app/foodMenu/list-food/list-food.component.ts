@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { faEdit, faPlusCircle, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faEdit, faPlusCircle, faTimes, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { MenuService } from 'src/app/services/menu.service';
 import { Menu } from '../menu';
 
@@ -18,6 +18,8 @@ export class ListFoodComponent implements OnInit {
   addButton = faPlusCircle;
   deleteUserIcon = faTrashAlt;
   userEditIcon = faEdit;
+  chevronDown = faChevronDown;
+  closeButton = faTimes;
 
   public deleteMenu!: Menu;
   
@@ -25,6 +27,10 @@ export class ListFoodComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    this.getMenu();
+  }
+
+  ngDoCheck()	{
     this.getMenu();
   }
 

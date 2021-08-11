@@ -6,53 +6,165 @@
         <a class="btn btn-dark" style="float:right" [routerLink]="['registrar']">Adicionar <fa-icon [icon]="addButton"></fa-icon></a>
     </div>
 </div>
-<div  id="main-container" *ngFor="let menu of menus; let i = index">
-    <div class="row">
-            <div class="col-md-3">
-                <div class="esq" *ngIf="i % 2 == 0">
-                    <div class="card card-background">
-                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
-                        <div class="filter"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="esq" *ngIf="i%2 == 0">
-                    <div class="menu-details">
-                        <h3 class="menu-title">{{ menu?.foodName }}</h3>
-                        {{ menu?.foodDetails }}
-                    </div>
-                    <div class="menu-price">
-                        <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
-                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
-                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="dir" *ngIf="i % 2 != 0">
-                    <div class="card card-background">
-                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
-                        <div class="filter"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="dir" *ngIf="i%2 != 0">
-                    <div class="menu-details">
-                        <h3 class="menu-title">{{ menu?.foodName }}</h3>
-                        {{ menu?.foodDetails }}
-                    </div>
-                    <div class="menu-price">
-                        <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
-                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
-                        <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)">Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
-                    </div>
-                </div>
-            </div>
 
+<!-- Aperitivos -->
+<div>
+    <h2 class="menu-subtitle" data-bs-toggle="collapse" href="#appetizers" aria-expanded="false" aria-controls="appetizers">    
+    <fa-icon [icon]="chevronDown" style="font-size: 35px; margin-right: 20px;"></fa-icon>
+    Aperitivos</h2>
+</div>
+<div class="collapse" id="appetizers" >
+    <div  id="main-container" >
+        <div class="row">
+            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Aperitivos'">
+                <div class="menu">
+                    <div class="card card-background">
+                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
+                        <div class="filter"></div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-details">
+                            <h3 class="menu-title">{{ menu?.foodName }}</h3>
+                            {{ menu?.foodDetails }}
+                        </div>
+                        <div class="menu-price">
+                            <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
+</div>
+
+<!-- Lanches -->
+<div>
+    <h2 class="menu-subtitle" data-bs-toggle="collapse" href="#burguers" aria-expanded="false" aria-controls="appetizers">    
+    <fa-icon [icon]="chevronDown" style="font-size: 35px; margin-right: 20px;"></fa-icon>
+    Lanches</h2>
+</div>
+<div class="collapse" id="burguers" >
+    <div  id="main-container" >
+        <div class="row">
+            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Lanches'">
+                <div class="menu">
+                    <div class="card card-background">
+                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
+                        <div class="filter"></div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-details">
+                            <h3 class="menu-title">{{ menu?.foodName }}</h3>
+                            {{ menu?.foodDetails }}
+                        </div>
+                        <div class="menu-price">
+                            <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Beirutes -->
+<div>
+    <h2 class="menu-subtitle" data-bs-toggle="collapse" href="#beirut" aria-expanded="false" aria-controls="appetizers">    
+    <fa-icon [icon]="chevronDown" style="font-size: 35px; margin-right: 20px;"></fa-icon>
+    Beirutes</h2>
+</div>
+<div class="collapse" id="beirut" >
+    <div  id="main-container" >
+        <div class="row">
+            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Beirutes'">
+                <div class="menu">
+                    <div class="card card-background">
+                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
+                        <div class="filter"></div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-details">
+                            <h3 class="menu-title">{{ menu?.foodName }}</h3>
+                            {{ menu?.foodDetails }}
+                        </div>
+                        <div class="menu-price">
+                            <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sobremesas -->
+<div>
+    <h2 class="menu-subtitle" data-bs-toggle="collapse" href="#dessert" aria-expanded="false" aria-controls="appetizers">    
+    <fa-icon [icon]="chevronDown" style="font-size: 35px; margin-right: 20px;"></fa-icon>
+    Sobremesas</h2>
+</div>
+<div class="collapse" id="dessert" >
+    <div  id="main-container" >
+        <div class="row">
+            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Sobremesas'">
+                <div class="menu">
+                    <div class="card card-background">
+                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
+                        <div class="filter"></div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-details">
+                            <h3 class="menu-title">{{ menu?.foodName }}</h3>
+                            {{ menu?.foodDetails }}
+                        </div>
+                        <div class="menu-price">
+                            <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bebidas -->
+<div>
+    <h2 class="menu-subtitle" data-bs-toggle="collapse" href="#drinks" aria-expanded="false" aria-controls="appetizers">    
+    <fa-icon [icon]="chevronDown" style="font-size: 35px; margin-right: 20px;"></fa-icon>
+    Bebidas</h2>
+</div>
+<div class="collapse" id="drinks" >
+    <div  id="main-container" >
+        <div class="row">
+            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Bebidas'">
+                <div class="menu">
+                    <div class="card card-background">
+                        <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
+                        <div class="filter"></div>
+                    </div>
+                    <div class="menu-info">
+                        <div class="menu-details">
+                            <h3 class="menu-title">{{ menu?.foodName }}</h3>
+                            {{ menu?.foodDetails }}
+                        </div>
+                        <div class="menu-price">
+                            <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
  <!-- Delete Modal -->
@@ -64,7 +176,7 @@
 			 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		  </div>
 		  <div class="modal-body">
-			 <p>Tem certeza que deseja excluir o cliente {{ deleteMenu?.foodName }}?</p>
+			 <p>Tem certeza que deseja excluir o prato {{ deleteMenu?.foodName }}?</p>
 			 <div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
 				<button (click)="onDeleteMenu(deleteMenu.id)" class="btn btn-danger" data-bs-dismiss="modal">Sim</button>

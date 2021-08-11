@@ -12,14 +12,17 @@ body{
     height: 310px;
     width: 260px;
 }
+
 .card-background {
     position: relative;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
+
 .card-background .image {
     border-radius: 6px;
 
 }
+
 .card .image {
     width: 100%;
     overflow: hidden;
@@ -52,6 +55,7 @@ body{
     height: 100%;
     text-align: center;
 }
+
 .card-background:hover .filter {
     opacity: 0.65;
     filter: alpha(opacity=65);
@@ -69,12 +73,31 @@ body{
     font-weight: bold;
 }
 
-.dir{
-    position: absolute; 
-    top: 155px;
-}
-
 .menu-price{
     font-weight: bold;
     margin-top:40px;
+}
+
+.menu-subtitle {
+    margin-top: 40px;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 5px solid black;
+    cursor: pointer;
+}
+
+.collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+}
+
+.menu-info{
+    height: 310px;
+    flex: 1;
+    margin-left: 20px;
+}
+
+.menu{
+    display: flex;
 }

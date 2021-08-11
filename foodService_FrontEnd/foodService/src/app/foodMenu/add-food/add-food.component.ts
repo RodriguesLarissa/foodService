@@ -16,9 +16,9 @@ export class AddFoodComponent implements OnInit {
 
   backButton = faArrowCircleLeft;
 
-  onSubmit(addForm: NgForm): void{
-    //this.listFoodComponent.getMenu();
+  onSubmit(addForm: NgForm): void{    
     this.router.navigateByUrl('/menu');
+    this.listFoodComponent.getMenu();
     this.menuService.addMenu(addForm.value).subscribe(
       (response: Menu) => {
         console.log(response);
