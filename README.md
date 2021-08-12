@@ -12,10 +12,7 @@ To execute Spring-boot Application:
 
 # Example Usage
 
-## PostMan Example
-
-
-## Angular Front-end Example
+## Client Tab Example
 Access `http://localhost:4200/` to enter at the homepage, then click on `Clientes` to access the client list.
 
 This page will bring the list of all clients saved in data base.
