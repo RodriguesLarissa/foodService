@@ -18,13 +18,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr *ngFor="let user of users">
-							<td>{{ user?.name }} {{ user?.lastName }}</td>
-							<td>{{ user?.phone }}</td>
-							<td>{{ user?.email }}</td>
-							<td><fa-icon (click)="onOpenModal(user, 'info')"[icon]="infoIcon"></fa-icon></td>
-							<td><fa-icon [routerLink]="'editar'" (click)="openEditPage(user)" [icon]="userEditIcon"></fa-icon></td>
-							<td><fa-icon (click)="onOpenModal(user, 'delete')" [icon]="deleteUserIcon"></fa-icon></td>
+						<tr *ngFor="let user of users; let i = index">
+							<td id="name">{{ user?.name }} {{ user?.lastName }}</td>
+							<td id="phone">{{ user?.phone }}</td>
+							<td id="email">{{ user?.email }}</td>
+							<td><fa-icon id="info{{i}}" (click)="onOpenModal(user, 'info')"[icon]="infoIcon"></fa-icon></td>
+							<td><fa-icon id="edit{{i}}" [routerLink]="'editar'" (click)="openEditPage(user)" [icon]="userEditIcon"></fa-icon></td>
+							<td><fa-icon id="delete{{i}}" (click)="onOpenModal(user, 'delete')" [icon]="deleteUserIcon"></fa-icon></td>
 						</tr>	
 					</tbody>
 				</table>
@@ -65,43 +65,43 @@
 				<tbody>
 					<tr>
 						<th>Nome</th>
-						<td>{{ infoUser?.name }} {{ infoUser?.lastName }}</td>
+						<td id="name">{{ infoUser?.name }} {{ infoUser?.lastName }}</td>
 					</tr>
 					<tr>
 						<th>E-mail</th>
-						<td>{{ infoUser?.email }}</td>
+						<td id="email">{{ infoUser?.email }}</td>
 					</tr>
 					<tr>
 						<th>Telefone</th>
-						<td>{{ infoUser?.phone }}</td>
+						<td id="phone">{{ infoUser?.phone }}</td>
 					</tr>
 					<tr>
 						<th>Data de Aniversário</th>
-						<td>{{ infoUser?.birthday }}</td>
+						<td id="birthday">{{ infoUser?.birthday }}</td>
 					</tr>
 					<tr>
 						<th>CEP</th>
-						<td>{{ infoUser?.cep }}</td>
+						<td id="cep">{{ infoUser?.cep }}</td>
 					</tr>
 					<tr>
 						<th>Rua</th>
-						<td>{{ infoUser?.street }}, {{ infoUser?.number }}</td>
+						<td id="street">{{ infoUser?.street }}, {{ infoUser?.number }}</td>
 					</tr>
 					<tr *ngIf="infoUser?.complement != undefined">
 						<th>Complemento</th>
-						<td>{{ infoUser?.complement }}</td>
+						<td id="complement">{{ infoUser?.complement }}</td>
 					</tr>
 					<tr>
 						<th>Bairro</th>
-						<td>{{ infoUser?.district }}</td>
+						<td id="district">{{ infoUser?.district }}</td>
 					</tr>
 					<tr>
 						<th>Cidade</th>
-						<td>{{ infoUser?.city }}</td>
+						<td id="city">{{ infoUser?.city }}</td>
 					</tr>
 					<tr>
 						<th>Estado</th>
-						<td>{{ infoUser?.state }}</td>
+						<td id="state">{{ infoUser?.state }}</td>
 					</tr>
 				</tbody>
 			</table>

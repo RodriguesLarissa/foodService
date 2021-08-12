@@ -15,18 +15,17 @@ import { Menu } from '../menu';
 export class AddFoodComponent implements OnInit {
 
   backButton = faArrowCircleLeft;
+  public editMenu!: Menu; 
 
   onSubmit(addForm: NgForm): void{    
-    this.router.navigateByUrl('/menu');
     this.listFoodComponent.getMenu();
     this.menuService.addMenu(addForm.value).subscribe(
       (response: Menu) => {
         console.log(response);
-        addForm.reset();
+        this.router.navigateByUrl('/menu');
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
-        addForm.reset();
       }
     );
   }
@@ -36,6 +35,7 @@ export class AddFoodComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.editMenu = this.menuService.getMenus();
   }
 
 }

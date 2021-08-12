@@ -16,7 +16,7 @@
 <div class="collapse" id="appetizers" >
     <div  id="main-container" >
         <div class="row">
-            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Aperitivos'">
+            <div class="col-6" *ngFor="let menu of menus; let i = index" [hidden]="menu?.foodType != 'Aperitivos'">
                 <div class="menu">
                     <div class="card card-background">
                         <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
@@ -29,8 +29,8 @@
                         </div>
                         <div class="menu-price">
                             <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 <div class="collapse" id="burguers" >
     <div  id="main-container" >
         <div class="row">
-            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Lanches'">
+            <div class="col-6" *ngFor="let menu of menus; let i = index" [hidden]="menu?.foodType != 'Lanches'">
                 <div class="menu">
                     <div class="card card-background">
                         <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
@@ -61,8 +61,8 @@
                         </div>
                         <div class="menu-price">
                             <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
 <div class="collapse" id="beirut" >
     <div  id="main-container" >
         <div class="row">
-            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Beirutes'">
+            <div class="col-6" *ngFor="let menu of menus; let i = index" [hidden]="menu?.foodType != 'Beirutes'">
                 <div class="menu">
                     <div class="card card-background">
                         <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
@@ -93,8 +93,8 @@
                         </div>
                         <div class="menu-price">
                             <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
                         </div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
 <div class="collapse" id="dessert" >
     <div  id="main-container" >
         <div class="row">
-            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Sobremesas'">
+            <div class="col-6" *ngFor="let menu of menus; let i = index" [hidden]="menu?.foodType != 'Sobremesas'">
                 <div class="menu">
                     <div class="card card-background">
                         <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
@@ -125,8 +125,8 @@
                         </div>
                         <div class="menu-price">
                             <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
 <div class="collapse" id="drinks" >
     <div  id="main-container" >
         <div class="row">
-            <div class="col-6" *ngFor="let menu of menus" [hidden]="menu?.foodType != 'Bebidas'">
+            <div class="col-6" *ngFor="let menu of menus; let i = index" [hidden]="menu?.foodType != 'Bebidas'">
                 <div class="menu">
                     <div class="card card-background">
                         <img class="image" src="{{ menu?.imageUrl }}" style="background-size: cover; background-position: 50% 50%;">
@@ -157,8 +157,8 @@
                         </div>
                         <div class="menu-price">
                             <h3 style="font-weight: bold;">{{ menu?.price }}</h3>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
-                            <a class="btn btn-dark ms-auto" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{ i }}" style="margin-right: 10px;" (click)="onOpenModal(menu)">Deletar <fa-icon [icon]="deleteUserIcon"></fa-icon></a>
+                            <a class="btn btn-dark ms-auto" id="{{i}}" style="margin-right: 10px;" [routerLink]="['editar']" (click)="openEditPage(menu)" >Editar <fa-icon [icon]="userEditIcon"></fa-icon></a>
                         </div>
                     </div>
                 </div>

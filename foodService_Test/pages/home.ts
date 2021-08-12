@@ -11,4 +11,4 @@ class Homepage{
     }
 }
 
-export default new Homepage();
+export const homepage = new Homepage(); 

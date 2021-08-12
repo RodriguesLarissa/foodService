@@ -100,21 +100,6 @@ export class ListaClientesComponent implements OnInit {
     button.click();
   }
 
-  public onAddUser(addForm: NgForm): void {
-    document.getElementById('add-user-form')?.click();
-    this.usersService.addUsers(addForm.value).subscribe(
-      (response: Users) => {
-        console.log(response);
-        this.getUsers();
-        addForm.reset();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
-      }
-    );
-  }
-
   public onDeleteUser(userId: number): void {
     this.usersService.deleteUsers(userId).subscribe(
       (response: void) => {

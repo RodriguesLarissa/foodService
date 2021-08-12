@@ -19,22 +19,21 @@ export class RegistrationComponent implements OnInit {
 
   model: NgbDateStruct | undefined;
  
+  public addUser !: Users;
 
   iconCalendar = faCalendarAlt
   backButton = faArrowCircleLeft
 
   onSubmit(addForm: NgForm): void{
     this.listaClienteComponent.getUsers();
-    this.router.navigateByUrl('/clientes');
     addForm.value.birthday =  this.parserFormatter.format(addForm.value.birthday)
     this.userService.addUsers(addForm.value).subscribe(
       (response: Users) => {
         console.log(response);
-        addForm.reset();
+        this.router.navigateByUrl('/clientes');
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
-        addForm.reset();
       }
     );
   }
@@ -46,7 +45,7 @@ export class RegistrationComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
-
+    this.addUser = this.userService.getUser();
   }
 
   consultaCEP(cep: any, form: any) {

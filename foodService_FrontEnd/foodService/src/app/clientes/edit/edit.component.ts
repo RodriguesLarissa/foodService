@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { faArrowCircleLeft, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
-import {NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 
 import { ListaClientesComponent } from '../lista-clientes/lista-clientes.component'
 import { UsersService } from 'src/app/services/users.service';
@@ -25,10 +24,10 @@ export class EditComponent implements OnInit {
 
   onSubmit(user: Users): void{
     this.listaClienteComponent.getUsers();
-    this.router.navigateByUrl('/clientes');
     this.userService.updateUsers(user).subscribe(
       (response: Users) => {
         console.log(response);
+        this.router.navigateByUrl('/clientes');
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
