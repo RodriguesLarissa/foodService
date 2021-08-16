@@ -2,7 +2,11 @@ import { homepage } from "../pages/home";
 import { menu } from "../pages/menu";
 
 fixture`Menu Tests`
-    .page("http://localhost:4200/");
+    .page("http://localhost:4200/")
+    .beforeEach(async t =>{
+        await t 
+            .maximizeWindow()
+    });
 
 test('Add food to menu', async t => {
     await t

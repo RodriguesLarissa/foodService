@@ -3,12 +3,23 @@ Food Service is a web system for restaurant management.
 
 # How to run
 ## Front-end
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` inside the "foodService" folder at foodService_FrontEnd. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Back-end
-To execute Spring-boot Application:
+To execute Spring-boot Application, run the following code at foodService_BackEnd:
 
 `./gradlew bootRun`
+
+## Tests
+Run the tests with the following command at foodService_Test:
+
+`testcafe chrome tests/clients.test.ts`
+
+`testcafe chrome tests/menu.test.ts`
+
+Results:
+![Saida](/images/ClientsTests.png)
+![Saida](/images/MenuTests.png)
 
 # Example Usage
 

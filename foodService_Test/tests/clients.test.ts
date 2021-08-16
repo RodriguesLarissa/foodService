@@ -1,8 +1,13 @@
+import { t } from "testcafe";
 import { clientList } from "../pages/clients";
 import { homepage } from "../pages/home";
 
 fixture`Clients Tests`
-    .page("http://localhost:4200/");
+    .page("http://localhost:4200/")
+    .beforeEach(async t =>{
+        await t 
+            .maximizeWindow()
+    });
 
 test('Add client', async t => {
     await t
